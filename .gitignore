@@ -18,3 +18,7 @@ grafana.db
 # OS clutter
 .DS_Store
 Thumbs.db
+
+# IDE
+.idea/
+
