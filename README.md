@@ -1,6 +1,6 @@
 # Orion 2 BMS Data Logging Stack
 
-This project allows you to log live Orion 2 BMS CAN data to a laptop, store it as time-series data using InfluxDB, and visualize it with Grafana! This is the perfect jumping off point for anybody who is trying to make an effective dashboard to monitor everything they'd need to know about a battery pack. This project was done for Sunstang at Western Unviersity. This project used Cursor and Windsurf alongside some Claude writing, but was also done the good old fashioned way by the battery team.
+This project allows you to log live Orion 2 BMS CAN data to a laptop, store it as time-series data using InfluxDB, and visualize it with Grafana! Inside is both the script for sending directly from CANbus to Grafana (via wired connection) and the script for sending over WiFi. Note that sending over WiFi takes additional stuff, like a proper telemetry board setup, which I do not give instructions for or anything here.This is the perfect jumping off point for anybody who is trying to make an effective dashboard to monitor everything they'd need to know about a battery pack. This project was done for Sunstang at Western Unviersity. This project used Cursor and Windsurf alongside some Claude writing, but was also done the good old fashioned way by the battery team.
 
 ## Architecture
 **Orion 2 BMS (CAN)** → **USB CAN adapter** → **Python logger** → **InfluxDB 3 Core** → **Grafana dashboard**
