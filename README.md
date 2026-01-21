@@ -1,4 +1,4 @@
-# Sunstang BMS Telemetry (CAN → InfluxDB 3 Core → Grafana)
+# Orion 2 BMS Data Logging Stack
 
 This project allows you to log live Orion 2 BMS CAN data to a laptop, store it as time-series data using InfluxDB, and visualize it with Grafana! This is the perfect jumping off point for anybody who is trying to make an effective dashboard to monitor everything they'd need to know about a battery pack. This project was done for Sunstang at Western Unviersity. This project used Cursor and Windsurf alongside some Claude writing, but was also done the good old fashioned way by the battery team.
 
@@ -217,12 +217,3 @@ Use the venv python explicitly:
 * Check Grafana time range (Last 5/15 minutes)
 * Confirm InfluxDB query returns recent rows
 * Confirm Grafana data source points to the right URL + database + token
-
----
-
-## Security
-
-* Never commit your real token.
-* Keep `.env` ignored and commit only `.env.example`.
-
----
