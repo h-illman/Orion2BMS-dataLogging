@@ -1,0 +1,20 @@
+﻿# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Influx/Grafana local data (do not commit)
+data/
+*.db
+grafana.db
+
+# OS clutter
+.DS_Store
+Thumbs.db
