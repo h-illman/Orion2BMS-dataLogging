@@ -29,8 +29,7 @@ This project allows you to log live Orion 2 BMS CAN data to a laptop, store it a
 
 .
 ├─ scripts/
-│  ├─ candapter_to_influx_raw.py            # logs raw CAN frames into InfluxDB
-│  └─ (optional) candapter_to_influx_telem.py  # decoded telemetry fields
+│  ├─ canAdapterToInfluxDB.py            # logs raw CAN frames into InfluxDB
 ├─ dashboards/
 │  └─ sunstang_bms_race_dashboard.json      # Grafana dashboard export
 ├─ .env.example
