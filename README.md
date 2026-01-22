@@ -5,7 +5,7 @@ This project allows you to log live Orion 2 BMS CAN data to a laptop, store it a
 ## Architecture
 **Orion 2 BMS (CAN)** → **USB CAN adapter** → **Python logger** → **InfluxDB 3 Core** → **Grafana dashboard**
 
-> Note: The Python logger reads CAN frames directly. It does **not** scrape the Orion Utility GUI.
+> Note: The Python logger reads CAN frames directly. It does **not** scrape the Orion Utility GUI. Furthermore, there are two loggers. One logger allows you to read raw CAN data, and the other allows you to read decoded data specific to the dashboard JSON files. The raw one is the reccomended version, as it allows you to make your own set up work, but if you want to directly copy you can use the other. For the sake of this readme, I will use the raw.
 
 ---
 
@@ -30,6 +30,7 @@ This project allows you to log live Orion 2 BMS CAN data to a laptop, store it a
 .
 ├─ scripts/
 │  ├─ canAdapterToInfluxDB.py            # logs raw CAN frames into InfluxDB
+│  ├─ canAdapterToInfluxDB_decoding            # logs decoded CAN frames into InfluxDB
 ├─ dashboards/
 │  └─ sunstang_bms_race_dashboard.json      # Grafana dashboard export
 ├─ .env.example
