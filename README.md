@@ -1,11 +1,12 @@
 # Orion 2 BMS Data Logging Stack
 
-This project allows you to log live Orion 2 BMS CAN data to a laptop, store it as time-series data using InfluxDB, and visualize it with Grafana! Inside is both the script for sending directly from CANbus to Grafana (via wired connection) and the script for sending over WiFi. Note that sending over WiFi takes additional stuff, like a proper telemetry board setup, which I do not give instructions for or anything here.This is the perfect jumping off point for anybody who is trying to make an effective dashboard to monitor everything they'd need to know about a battery pack. This project was done for Sunstang at Western Unviersity. This project used Cursor and Windsurf alongside some Claude writing, but was also done the good old fashioned way by the battery team.
+This project allows you to log live Orion 2 BMS CAN data to a laptop, store it as time-series data using InfluxDB, and visualize it with Grafana! Inside is both the script for sending directly from CANbus to Grafana (via wired connection) and the script for sending over WiFi. Note that sending over WiFi takes additional stuff, like a proper telemetry board setup. For the sake of this project, I assume you have that figured out already and can make alterations to the code as needed for your setup. This is the perfect jumping off point for anybody who is trying to make an effective dashboard to monitor everything they'd need to know about a battery pack. This project was done for Sunstang at Western Unviersity and used tools like Cursor and Windsurf alongside some Claude writing, but was also done the good old fashioned way by the battery team.
 
 ## Architecture
 **Orion 2 BMS (CAN)** → **USB CAN adapter** → **Python logger** → **InfluxDB 3 Core** → **Grafana dashboard**
+**Orion 2 BMS (CAN)** → **ESP32 telemetry board** → **WiFi** → **Laptop** → **Python logger** → **InfluxDB 3 Core** → **Grafana dashboard**
 
-> Note: The Python logger reads CAN frames directly. It does **not** scrape the Orion Utility GUI. Furthermore, there are two loggers. One logger allows you to read raw CAN data, and the other allows you to read decoded data specific to the dashboard JSON files. The raw one is the reccomended version, as it allows you to make your own set up work, but if you want to directly copy you can use the other. For the sake of this readme, I will use the raw.
+> Note: The Python logger reads CAN frames directly. It does **not** scrape the Orion Utility GUI. Furthermore, there are two versopns loggers. One logger allows you to read raw CAN data, and the other allows you to read decoded data specific to the dashboard JSON files. The raw one is the reccomended version, as it allows you to make your own set up work, but if you want to directly copy you can use the other. For the sake of this readme, I will use the raw.
 
 ---
 
@@ -30,7 +31,7 @@ This project allows you to log live Orion 2 BMS CAN data to a laptop, store it a
 .
 ├─ scripts/
 │  ├─ canAdapterToInfluxDB.py            # logs raw CAN frames into InfluxDB
-│  ├─ canAdapterToInfluxDB_decoding            # logs decoded CAN frames into InfluxDB
+│  ├─ canAdapterToInfluxDB_decoding      # logs decoded CAN frames into InfluxDB
 ├─ dashboards/
 │  └─ sunstang_bms_race_dashboard.json      # Grafana dashboard export
 ├─ .env.example
@@ -145,7 +146,7 @@ In Grafana:
 Run:
 
 ```powershell
-.\.venv\Scripts\python.exe .\scripts\candapter_to_influx_raw.py
+.\.venv\Scripts\python.exe .\scripts\canAdapterToInfluxDB.py
 ```
 
 You should see periodic flush/write prints. Let it run for 10–30 seconds.
