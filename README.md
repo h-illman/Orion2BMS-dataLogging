@@ -14,7 +14,7 @@ This project allows you to log live Orion 2 BMS CAN data to a laptop, store it a
 ## Requirements
 
 ### Hardware
-- Orion 2 BMS on a CAN bus
+- Orion 2 BMS on a CAN bus. The logger expects the Orion 2 BMS CAN Transmit message map to be configured exactly as follows (since decoding is based on these byte assignments): 0x6B0 @ ~100 ms with Bytes 0–1 = Pack Voltage (uint16, 0.1 V/bit, little-endian), Bytes 2–3 = Pack Current (int16, 0.1 A/bit, little-endian), Byte 4 = SOC (uint8, 0.5 %/bit), Byte 5 = Avg Temp (int8, 1 °C/bit), Byte 6 = Max Temp (int8, 1 °C/bit), Byte 7 = Custom Flag #0 fault bitfield (uint8).
 - USB CAN adapter connected to your laptop  
   - This setup assumes an adapter that can be read by `python-can` (often SLCAN/serial style). This setup used the CANdapter included with the Orion 2 BMS.
 - Laptop with USB 3.0 port running Windows 10/11. As far as I am aware, USB-C would not work and using an adapter is not ideal. 
